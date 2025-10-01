@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBuX Casino - Grudge Studio</title>
+    <meta name="description" content="Web3 Casino powered by Grudge Studio featuring NFT-integrated gaming on Solana">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <h1 class="logo">GRUDGE STUDIO</h1>
+                <p class="tagline">GBuX Casino</p>
+            </div>
+            <div class="wallet-section">
+                <button id="connect-wallet" class="btn btn-primary">Connect Wallet</button>
+                <div id="wallet-info" class="wallet-info hidden">
+                    <p id="wallet-address" class="wallet-address"></p>
+                    <p id="wallet-balance" class="wallet-balance"></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Casino Area -->
+        <main class="casino-main">
+            <div class="game-container">
+                <h2 class="game-title">The Growerz NFT Slots</h2>
+                
+                <!-- Slot Machine -->
+                <div class="slot-machine">
+                    <div class="slot-display">
+                        <div class="reel" id="reel1">
+                            <div class="symbol"></div>
+                        </div>
+                        <div class="reel" id="reel2">
+                            <div class="symbol"></div>
+                        </div>
+                        <div class="reel" id="reel3">
+                            <div class="symbol"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="slot-controls">
+                        <div class="bet-controls">
+                            <label for="bet-amount">Bet Amount (GBuX):</label>
+                            <input type="number" id="bet-amount" min="1" max="100" value="10" class="bet-input">
+                        </div>
+                        <button id="spin-btn" class="btn btn-spin">SPIN</button>
+                    </div>
+                    
+                    <div class="game-info">
+                        <div class="info-item">
+                            <span class="label">Balance:</span>
+                            <span id="player-balance" class="value">1000 GBuX</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Last Win:</span>
+                            <span id="last-win" class="value">0 GBuX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pay Table -->
+                <div class="pay-table">
+                    <h3>Pay Table</h3>
+                    <div class="pay-table-grid">
+                        <div class="pay-row">
+                            <span class="combo">🌿 🌿 🌿</span>
+                            <span class="payout">100x</span>
+                        </div>
+                        <div class="pay-row">
+                            <span class="combo">💎 💎 💎</span>
+                            <span class="payout">50x</span>
+                        </div>
+                        <div class="pay-row">
+                            <span class="combo">🎰 🎰 🎰</span>
+                            <span class="payout">25x</span>
+                        </div>
+                        <div class="pay-row">
+                            <span class="combo">Any 2 Match</span>
+                            <span class="payout">2x</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NFT Gallery -->
+            <div class="nft-gallery">
+                <h3>The Growerz Collection</h3>
+                <div class="nft-grid" id="nft-grid">
+                    <div class="nft-card loading">Loading NFTs...</div>
+                </div>
+                <a href="https://magiceden.us/marketplace/the_growerz" target="_blank" class="btn btn-secondary">
+                    View on Magic Eden
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Grudge Studio. All rights reserved.</p>
+            <p class="disclaimer">Play responsibly. This is a demonstration platform.</p>
+            <div class="social-links">
+                <a href="https://www.grudgestudio.com" target="_blank">Website</a>
+                <a href="https://www.grudgestudio.com/branding" target="_blank">Branding</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="public/js/wallet.js"></script>
+    <script src="public/js/nft.js"></script>
+    <script src="public/js/slots.js"></script>
+    <script src="public/js/main.js"></script>
+</body>
+</html>
