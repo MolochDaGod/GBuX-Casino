@@ -98,19 +98,27 @@ class SlotMachine {
         const reelElements = [this.reel1, this.reel2, this.reel3];
         reelElements.forEach(reel => reel.classList.add('spinning'));
 
-        // Animate spinning with changing symbols
-        const spinInterval = setInterval(() => {
-            reelElements.forEach(reel => {
+        // Animate spinning with changing symbols (staggered intervals)
+        const reelIntervals = [
+            setInterval(() => {
                 const item = nftManager.getRandomSlotItem();
-                this.setReelContent(reel, item);
-            });
-        }, 100);
+                this.setReelContent(this.reel1, item);
+            }, 100),
+            setInterval(() => {
+                const item = nftManager.getRandomSlotItem();
+                this.setReelContent(this.reel2, item);
+            }, 150),
+            setInterval(() => {
+                const item = nftManager.getRandomSlotItem();
+                this.setReelContent(this.reel3, item);
+            }, 200)
+        ];
 
         // Wait for spin duration
         await this.sleep(this.spinDuration);
 
         // Stop spinning
-        clearInterval(spinInterval);
+        reelIntervals.forEach(interval => clearInterval(interval));
         reelElements.forEach(reel => reel.classList.remove('spinning'));
 
         // Generate final results
