@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-grudge-darker text-grudge-text font-grudge;
+  }
+
+  * {
+    @apply border-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-grudge-primary to-grudge-secondary hover:opacity-90 transition-opacity px-6 py-3 rounded-lg font-semibold shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-grudge-dark hover:bg-opacity-80 transition-all px-6 py-3 rounded-lg font-semibold border border-grudge-primary;
+  }
+
+  .card {
+    @apply bg-grudge-dark rounded-xl p-6 shadow-xl border border-gray-800;
+  }
+
+  .input-field {
+    @apply bg-grudge-darker border border-gray-700 rounded-lg px-4 py-2 focus:border-grudge-primary focus:outline-none transition-colors;
+  }
+
+  .neon-glow {
+    @apply shadow-[0_0_10px_rgba(139,92,246,0.5)];
+  }
+
+  .neon-glow-green {
+    @apply shadow-[0_0_10px_rgba(16,185,129,0.5)];
+  }
+
+  .neon-glow-pink {
+    @apply shadow-[0_0_10px_rgba(236,72,153,0.5)];
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+  }
+}
