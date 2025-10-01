@@ -1,0 +1,24 @@
+{
+  "name": "gbux-casino",
+  "version": "1.0.0",
+  "description": "Casino for GBUX and SOL trades - THC SPIN slot game",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 8080",
+    "build": "echo 'No build step needed for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "casino",
+    "gbux",
+    "solana",
+    "web3",
+    "slot-machine"
+  ],
+  "author": "MolochDaGod",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "http-server": "^14.1.1"
+  }
+}

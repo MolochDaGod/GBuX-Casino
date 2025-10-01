@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBuX Casino - THC SPIN</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>🌿 GBuX CASINO 🌿</h1>
+                <p class="tagline">THC SPIN - Powered by Solana</p>
+            </div>
+            <div class="wallet-section">
+                <button id="connectWallet" class="btn btn-primary">
+                    Connect Wallet
+                </button>
+                <div id="walletInfo" class="wallet-info" style="display: none;">
+                    <div class="wallet-address" id="walletAddress"></div>
+                    <div class="balance-container">
+                        <div class="balance-item">
+                            <span class="balance-label">SOL:</span>
+                            <span id="solBalance" class="balance-value">0.00</span>
+                        </div>
+                        <div class="balance-item">
+                            <span class="balance-label">GBUX:</span>
+                            <span id="gbuxBalance" class="balance-value">0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-container">
+            <div class="game-header">
+                <h2>🍃 THC SPIN 🍃</h2>
+                <p class="game-subtitle">Spin to Win with GBUX & SOL</p>
+            </div>
+
+            <!-- Slot Machine -->
+            <div class="slot-machine">
+                <div class="slot-display">
+                    <div class="reel" id="reel1">
+                        <div class="symbol">🌿</div>
+                    </div>
+                    <div class="reel" id="reel2">
+                        <div class="symbol">💎</div>
+                    </div>
+                    <div class="reel" id="reel3">
+                        <div class="symbol">🍀</div>
+                    </div>
+                </div>
+                
+                <div class="result-message" id="resultMessage"></div>
+            </div>
+
+            <!-- Betting Controls -->
+            <div class="betting-controls">
+                <div class="bet-input-group">
+                    <label for="betAmount">Bet Amount:</label>
+                    <input type="number" id="betAmount" value="0.1" min="0.01" step="0.01">
+                    <select id="betToken" class="token-select">
+                        <option value="SOL">SOL</option>
+                        <option value="GBUX">GBUX</option>
+                    </select>
+                </div>
+                
+                <button id="spinButton" class="btn btn-spin" disabled>
+                    🎰 SPIN 🎰
+                </button>
+                
+                <div class="multiplier-info">
+                    <p>🌿🌿🌿 = 10x | 💎💎💎 = 20x | 🍀🍀🍀 = 50x</p>
+                    <p>Any 2 match = 2x | 🔥🔥🔥 = 100x JACKPOT!</p>
+                </div>
+            </div>
+
+            <!-- Game Stats -->
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total Spins:</span>
+                    <span id="totalSpins" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Won:</span>
+                    <span id="totalWon" class="stat-value">0.00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Biggest Win:</span>
+                    <span id="biggestWin" class="stat-value">0.00</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>GBUX Token: <code>55TpSoMNxbfsNJ9U1dQoo9H3dRtDmjBZVMcKqvU2nray</code></p>
+                <p class="disclaimer">⚠️ Play responsibly. This is a demo casino game.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing transaction...</p>
+    </div>
+
+    <!-- Solana Web3.js -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
