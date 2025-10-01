@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GBuX Casino - THC SPIN slot game. Play with GBUX tokens and SOL on Solana blockchain.">
+    <meta name="keywords" content="casino, gbux, solana, web3, crypto, slot machine, thc">
     <title>GBuX Casino - THC SPIN</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -69,7 +72,7 @@
                     </select>
                 </div>
                 
-                <button id="spinButton" class="btn btn-spin" disabled>
+                <button id="spinButton" class="btn btn-spin">
                     🎰 SPIN 🎰
                 </button>
                 
@@ -111,8 +114,23 @@
         <p>Processing transaction...</p>
     </div>
 
-    <!-- Solana Web3.js -->
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-    <script src="app.js"></script>
+    <!-- Solana Web3.js - Using CDN with fallback -->
+    <script>
+        // Load Solana Web3.js from CDN
+        (function() {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js';
+            script.crossOrigin = 'anonymous';
+            script.onerror = function() {
+                console.warn('Failed to load Solana Web3.js from unpkg, trying alternative CDN');
+                const fallbackScript = document.createElement('script');
+                fallbackScript.src = 'https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.min.js';
+                fallbackScript.crossOrigin = 'anonymous';
+                document.head.appendChild(fallbackScript);
+            };
+            document.head.appendChild(script);
+        })();
+    </script>
+    <script src="app.js" defer></script>
 </body>
 </html>

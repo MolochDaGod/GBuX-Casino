@@ -21,7 +21,24 @@ let gameStats = {
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
-    initializeGame();
+    // Wait for Solana Web3.js to load
+    const checkWeb3Loaded = setInterval(() => {
+        if (typeof solanaWeb3 !== 'undefined') {
+            clearInterval(checkWeb3Loaded);
+            initializeGame();
+        }
+    }, 100);
+    
+    // Timeout after 10 seconds
+    setTimeout(() => {
+        clearInterval(checkWeb3Loaded);
+        if (typeof solanaWeb3 === 'undefined') {
+            console.error('Solana Web3.js failed to load');
+            // Initialize anyway with limited functionality
+            initializeGame();
+        }
+    }, 10000);
+    
     setupEventListeners();
     loadGameStats();
 });
@@ -52,6 +69,13 @@ function setupEventListeners() {
             e.target.value = 0.01;
         }
     });
+    
+    // Enable demo mode by default
+    setTimeout(() => {
+        if (!walletConnected) {
+            updateWalletUI();
+        }
+    }, 2000);
 }
 
 async function connectWallet() {
@@ -91,6 +115,7 @@ function updateWalletUI() {
     const connectBtn = document.getElementById('connectWallet');
     const walletInfo = document.getElementById('walletInfo');
     const walletAddressEl = document.getElementById('walletAddress');
+    const spinBtn = document.getElementById('spinButton');
 
     if (walletConnected && walletAddress) {
         // Hide connect button
@@ -102,6 +127,14 @@ function updateWalletUI() {
         // Display shortened address
         const shortAddress = `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`;
         walletAddressEl.textContent = shortAddress;
+        
+        // Enable spin button
+        spinBtn.disabled = false;
+    } else {
+        // Demo mode - enable spin anyway for testing
+        connectBtn.textContent = 'Connect Wallet (Demo Mode Active)';
+        spinBtn.disabled = false;
+        spinBtn.title = 'Demo mode - no real transactions';
     }
 }
 
@@ -127,11 +160,6 @@ async function updateBalances() {
 }
 
 async function spinSlots() {
-    if (!walletConnected) {
-        alert('Please connect your wallet first!');
-        return;
-    }
-
     const spinBtn = document.getElementById('spinButton');
     const betAmount = parseFloat(document.getElementById('betAmount').value);
     const betToken = document.getElementById('betToken').value;
@@ -139,6 +167,12 @@ async function spinSlots() {
     if (betAmount <= 0) {
         alert('Please enter a valid bet amount!');
         return;
+    }
+
+    // Demo mode if wallet not connected
+    if (!walletConnected) {
+        // Enable demo mode
+        console.log('Running in demo mode (wallet not connected)');
     }
 
     // Disable spin button during spin
